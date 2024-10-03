@@ -2,19 +2,6 @@ import cv2
 import numpy as np
 import sys
 
-def apply_mask(matrix, mask, fill_value):
-    masked = np.ma.array(matrix, mask=mask, fill_value=fill_value)
-    return masked.filled()
-
-def apply_threshold(matrix, low_value, high_value):
-    low_mask = matrix < low_value
-    matrix = apply_mask(matrix, low_mask, low_value)
-
-    high_mask = matrix > high_value
-    matrix = apply_mask(matrix, high_mask, high_value)
-
-    return matrix
-
 def simplest_cb(img, percent=1):
     out_channels = []
     cumstops = (
